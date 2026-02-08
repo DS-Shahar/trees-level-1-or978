@@ -130,4 +130,31 @@ public class Trees1 {
         }
         return current + negativeSum(t.getLeft()) + negativeSum(t.getRight());
     }
+
+            public static int max(BinNode<Integer> t)
+    {
+        //exit
+        if(t==null)return 0;
+        
+        int value = t.getValue();
+        if(t.hasLeft() && value<t.getLeft().getValue())
+        {
+            value=t.getLeft().getValue();
+        }
+        if(t.hasRight() && value<t.getRight().getValue())
+        {
+            value=t.getRight().getValue();
+        }
+        int left =max(t.getLeft());
+        int right =max(t.getRight());
+
+        if(value >right)
+            if(value>left)
+                return value;
+            else return left;
+        if(right>left)
+            return right;
+        return left;
+
+    }
 }
